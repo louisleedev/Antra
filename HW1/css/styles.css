@@ -1,0 +1,55 @@
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    text-align: initial;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+input {
+    margin: 5px;
+    padding: 3px;
+    width: 95%;
+}
+
+label {
+    text-align: initial;
+}
+
+button {
+    margin: 5px;
+    padding: 3px;
+    text-align: center;
+}
+
+.checkbox {
+    width: 5%;
+    text-align: initial;
+}
+
+.check {
+    text-align: initial;
+}
+
+.btnR {
+    background-color: rgb(40, 92, 215);
+}
+
+.btnS {
+    background-color: chartreuse;
+}
+
+.half {
+    width: 45%;
+}
+
+.outer {
+    text-align: center;
+}

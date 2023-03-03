@@ -1,0 +1,39 @@
+/* body {
+    display: relative;
+} */
+
+.Header{
+    text-align: center;
+}
+
+.hole-container {
+    text-align: center;
+    width: 900px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border: 2px solid red;
+    left: 10%
+}
+
+.timer {
+    width: 100px;
+    background-color: aqua;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.row {
+    display: flex;
+  }
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    text-align:center;
+    background-color: white;
+    border: 2px solid brown;
+}

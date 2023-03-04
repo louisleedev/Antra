@@ -1,7 +1,13 @@
 /* body {
     display: relative;
 } */
-
+img {
+    border-radius: 50%;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    pointer-events: none;
+}
 .Header{
     text-align: center;
 }

@@ -10,12 +10,12 @@ const View = (() => {
 
     const domSelector = {
         hole_container: document.querySelector("#hole_container"),
-        // hitBtn: document.querySelector("#hit"),
         restart: document.querySelector("#restart"),
         remain: document.querySelector("#remain")
     }
     //create template with array (successful)
     const createTemp = (dataArr) => {
+        console.log(dataArr)
         let temp = ""
         for (let index in dataArr) {
             if (index % 4 == 0) {
@@ -34,6 +34,7 @@ const View = (() => {
 
     const render = (ele, template) => {
         ele.innerHTML = template
+        console.log("success")
     }
 
     return {
@@ -69,21 +70,22 @@ const Model = ((view) => {
 })(View)
 
 const Controller = ((view, model) => {
-    const { domSelector } = view
+    const { render, domSelector } = view
     const { State } = model
     // const { getInitial } = api
     const state = new State()
     let time = 0
 
     //hit the mole
-    domSelector.hole_container.addEventListener('click', (event) => {
+    // domSelector.hole_container.addEventListener('click', (event) => {
 
-    })
+    // })
 
-    // //reset 
+    // // //reset 
     domSelector.restart.addEventListener('click', (event) => {
         time = 30
         state.dataList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        
     })
 
     //generate a new mole
@@ -101,7 +103,12 @@ const Controller = ((view, model) => {
             }
             state.dataList[index] = 1
         }
-        time -= 1
+        if (time > 0){
+            time -= 1
+        }else{
+            clearInterval(setTime)
+        }
+        
         render(domSelector.remain, `Time Left ${time}`)
     }
     //Get the initail array with no mole
@@ -120,10 +127,16 @@ const Controller = ((view, model) => {
 
 Controller.bootstrap()
 //Trigger the function of generate moles in Controller
-setInterval(() => {
+const setTime = setInterval(() => {
     Controller.setTimer()
 }, 1000)
 
+
+
+
+// const tmp = View.createTemp([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+// console.log(tmp)
+// View.render(View.domSelector.hole_container, tmp)
 
 
 

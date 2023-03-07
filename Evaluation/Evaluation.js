@@ -73,9 +73,7 @@ const Model = ((view) => {
     }
     return {
         State,
-        scoreState,
-        createTemp,
-        render
+        scoreState
     }
 })(View)
 
@@ -85,12 +83,12 @@ const Controller = ((view, model) => {
     const state = new State();
     const scorestate = new scoreState();
     let time;
-    let isRunning = false;
+    let isRunning = false;//initialize the status of setInterval: not running
     let activate;
     //Start a game 
     const startInterval = () => {
-        let disappearID = [];
-        let lastSnake = [];
+        let disappearID = [];//Record the moles going to disappear
+        let lastSnake = [];//Record the snake going to disappear
         //Generate moles and mines
         if (!isRunning) {
             activate = setInterval(() => {
@@ -153,6 +151,8 @@ const Controller = ((view, model) => {
     //Hit the moles and mines
     domSelector.hole_container.addEventListener('click', (event) => {
         let index = event.target.id
+        console.log(event)
+        console.log(event.target)
         if (state.dataList[index] == 1) {
             state.dataList[index] = 0;
             state.dataList = state.dataList;
@@ -167,7 +167,7 @@ const Controller = ((view, model) => {
     //Reset and Restart
     domSelector.restart.addEventListener('click', (event) => {
         time = 30;
-        state.dataList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        state.dataList = new Array(12).fill(0);
         scorestate.data = 0;
         //Decide the function according to the status of setInterval    
         if (!isRunning) {
@@ -181,7 +181,7 @@ const Controller = ((view, model) => {
     //Get the initail array with no mole
     const bootstrap = () => {
         time = 30;
-        state.dataList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        state.dataList = new Array(12).fill(0);
         render(domSelector.score, `Let's GOOOO!!!!, your total score: 0`);
     };
     return { bootstrap }
